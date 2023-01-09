@@ -1171,7 +1171,7 @@
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE { 50, 50, 15 } // { 50, 50, 15, 25 } // { 300, 300, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE { 200, 200, 15 } // { 50, 50, 15, 25 } // { 300, 300, 5, 25 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1690,8 +1690,8 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE 1220 // 200
-#define Y_BED_SIZE 2440 // 200
+#define X_BED_SIZE 1260 // 200
+#define Y_BED_SIZE 2470 // 200
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -2090,7 +2090,7 @@
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
-#define HOMING_FEEDRATE_MM_M { (35*60), (35*60), (4*60) } // { (50*60), (50*60), (4*60) }
+#define HOMING_FEEDRATE_MM_M { (60*60), (60*60), (4*60) } // { (50*60), (50*60), (4*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -3337,6 +3337,6 @@
 
 // Disable servo with M282 to reduce power consumption, noise, and heat when not in use
 //#define SERVO_DETACH_GCODE
-#define SHORT_BUILD_VERSION "515DL 2.1.1"
+#define SHORT_BUILD_VERSION "515DL 2.1.2"
 #define USER_DESC_4 "Probe Z min"
 #define USER_GCODE_4 "G38.2 Z0"
