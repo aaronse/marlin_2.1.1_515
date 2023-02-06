@@ -102,7 +102,7 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT -1 // AZA 1 0
+#define SERIAL_PORT -1 // AZA -1 = USB host
 
 /**
  * Serial Port Baud Rate
@@ -124,15 +124,15 @@
  * Currently Ethernet (-2) is only supported on Teensy 4.1 boards.
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-// #define SERIAL_PORT_2 1 // AZA Q: Enable for 2.1.1? -1
-//#define BAUDRATE_2 250000   // :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
+#define SERIAL_PORT_2 3 // AZA 3 = Wifi module (limited to 115200? 250000 didn't work)
+#define BAUDRATE_2 115200   // :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
 
 /**
  * Select a third serial port on the board to use for communication with the host.
  * Currently only supported for AVR, DUE, LPC1768/9 and STM32/STM32F1
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-// #define SERIAL_PORT_3 6 // AZA Q: Enable for 2.1.1? 1
+#define SERIAL_PORT_3 1 // AZA 1 = TFT
 //#define BAUDRATE_3 250000   // :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
 
 // Enable the Bluetooth serial interface on AT90USB devices
@@ -3337,6 +3337,6 @@
 
 // Disable servo with M282 to reduce power consumption, noise, and heat when not in use
 //#define SERVO_DETACH_GCODE
-// #define SHORT_BUILD_VERSION "515DL 2.1.2"
+// #define SHORT_BUILD_VERSION "515DL 2.1.1"
 // #define USER_DESC_4 "Probe Z min"
 // #define USER_GCODE_4 "G38.2 Z0"
