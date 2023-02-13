@@ -126,8 +126,8 @@
  * Currently Ethernet (-2) is only supported on Teensy 4.1 boards.
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 3 // AZA 3 = Wifi module (limited to 115200? 250000 didn't work)
-#define BAUDRATE_2 115200   // AZA :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
+#define SERIAL_PORT_2 3 // AZA 3 = Wifi module (set to 250000, but ESP3D MUST be configured same)
+//#define BAUDRATE_2 250000   // AZA :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
 
 /**
  * Select a third serial port on the board to use for communication with the host.
@@ -1292,7 +1292,7 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-// #define Z_MIN_PROBE_PIN PB7 // AZA Q: Enable? Z_MIN_PIN // 32 // Pin 32 is the RAMPS default
+#define Z_MIN_PROBE_PIN 23 // AZA 23 = PB7 D23, from buildroot\share\PlatformIO\variants\MARLIN_BIGTREE_OCTOPUS_V1\variant.h // Z_MIN_PIN
 
 /**
  * Probe Type 
@@ -1701,7 +1701,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 150
+#define Z_MAX_POS 200
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
