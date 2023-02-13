@@ -1,4 +1,6 @@
-// #define SPINDLE_LASER_ENA_PIN PB0 // AZA // Heater2
+// TODO:P1:AZA Laser, lookup and configure Laser values to use for Octopus.  Currently disabled values were for SKR1.2 which this configuration.h was copied from.Octopus 
+
+// #define SPINDLE_LASER_ENA_PIN PB0 // Heater2
 // #define SPINDLE_LASER_PWM_PIN PC9 // AZA 
 // #define SPINDLE_LASER_PWM_PIN PC9 // AZA 
 // #define SPINDLE_LASER_ENA_PIN PB0 // AZA // Heater2
@@ -1171,11 +1173,11 @@
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE { 200, 200, 15 } // AZA { 50, 50, 15, 25 } // { 300, 300, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE { 425, 425, 106 } // AZA XY: 1000 IPM, Z: 250 IPM { 50, 50, 15, 25 } // { 300, 300, 5, 25 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 150, 50 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1184,7 +1186,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION { 180, 180, 80 } // AZA { 180, 180, 80, 180 } // { 3000, 3000, 100, 10000 }
+#define DEFAULT_MAX_ACCELERATION { 300, 300, 100 } // AZA { 180, 180, 80, 180 } // { 3000, 3000, 100, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1293,7 +1295,7 @@
 // #define Z_MIN_PROBE_PIN PB7 // AZA Q: Enable? Z_MIN_PIN // 32 // Pin 32 is the RAMPS default
 
 /**
- * Probe Type
+ * Probe Type 
  *
  * Allen Key Probes, Servo Probes, Z-Sled Probes, FIX_MOUNTED_PROBE, etc.
  * Activate one of these to use Auto Bed Leveling below.
@@ -1636,9 +1638,9 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false  // AZA Q: true?
-#define INVERT_Y_DIR true   // AZA Q: false?
-#define INVERT_Z_DIR false  // AZA Q: true?
+#define INVERT_X_DIR false  // AZA
+#define INVERT_Y_DIR true   // AZA
+#define INVERT_Z_DIR false  // AZA
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
 //#define INVERT_K_DIR false
@@ -1737,7 +1739,7 @@
 #endif
 
 // Max software endstops constrain movement within maximum coordinate bounds
-#define MAX_SOFTWARE_ENDSTOPS // AZA
+//#define MAX_SOFTWARE_ENDSTOPS // AZA
 #if ENABLED(MAX_SOFTWARE_ENDSTOPS)
   #define MAX_SOFTWARE_ENDSTOP_X
   #define MAX_SOFTWARE_ENDSTOP_Y
@@ -1751,7 +1753,7 @@
 #endif
 
 #if EITHER(MIN_SOFTWARE_ENDSTOPS, MAX_SOFTWARE_ENDSTOPS)
-  // #define SOFT_ENDSTOPS_MENU_ITEM    // AZA // Enable/Disable software endstops from the LCD
+  #define SOFT_ENDSTOPS_MENU_ITEM    // AZA // Enable/Disable software endstops from the LCD
 #endif
 
 /**
@@ -2499,7 +2501,7 @@
 //
 //  Set this option if CLOCKWISE causes values to DECREASE
 //
-//#define REVERSE_ENCODER_DIRECTION // AZA Q: Enable, like 2.0.9.5? 
+//#define REVERSE_ENCODER_DIRECTION // AZA Disabled.  Is enabled in 2.0.9.5
 
 //
 // This option reverses the encoder direction for navigating LCD menus.
@@ -3337,6 +3339,6 @@
 
 // Disable servo with M282 to reduce power consumption, noise, and heat when not in use
 //#define SERVO_DETACH_GCODE
-// #define SHORT_BUILD_VERSION "515DL 2.1.1"
-// #define USER_DESC_4 "Probe Z min"
-// #define USER_GCODE_4 "G38.2 Z0"
+#define SHORT_BUILD_VERSION "515DL 2.1.1"
+#define USER_DESC_4 "Probe Z min"
+#define USER_GCODE_4 "G38.2 Z0"

@@ -823,7 +823,7 @@
 // Multi-Z steppers
 //
 #ifdef Z2_DRIVER_TYPE
-  // #define INVERT_Z2_VS_Z_DIR          // AZA Q: Enable, was enabled in 2.1.1 ? Z2 direction signal is the opposite of Z
+  #define INVERT_Z2_VS_Z_DIR          // AZA Enabled.  Z2 direction signal is the opposite of Z
 
   #define Z_MULTI_ENDSTOPS            // AZA Other Z axes have their own endstops
   #if ENABLED(Z_MULTI_ENDSTOPS)
@@ -1497,7 +1497,7 @@
 
   //#define MEDIA_MENU_AT_TOP               // Force the media menu to be listed on the top of the main menu
 
-  //#define EVENT_GCODE_SD_ABORT "G28XY"    // AZA Q: Not using, would enabling drag bit across stock when aborting?  // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
+  //#define EVENT_GCODE_SD_ABORT "G28XY"    // AZA Not using.  Would enabling drag bit across stock when aborting?  // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
 
   #if ENABLED(PRINTER_EVENT_LEDS)
     #define PE_LEDS_COMPLETED_TIME  (30*60) // (seconds) Time to keep the LED "done" color before restoring normal illumination
@@ -1595,7 +1595,7 @@
 
   //#define SD_REPRINT_LAST_SELECTED_FILE // On print completion open the LCD Menu and select the same file
 
-  // #define AUTO_REPORT_SD_STATUS           // AZA Q: Enable, was enabled in 2.1.1? Auto-report media status with 'M27 S<seconds>'
+  #define AUTO_REPORT_SD_STATUS           // AZA Enabled.  Auto-report media status with 'M27 S<seconds>'
 
   /**
    * Support for USB thumb drives using an Arduino USB Host Shield or
@@ -1626,7 +1626,7 @@
     //#define USE_UHS2_USB
     //#define USE_UHS3_USB
 
-    #define DISABLE_DUE_SD_MMC // AZA Q: Disable, not  in 2.0.9.5? Disable USB Host access to USB Drive to prevent hangs on block access for DUE platform
+    #define DISABLE_DUE_SD_MMC // AZA Disabled.  Not  in 2.0.9.5.  Disable USB Host access to USB Drive to prevent hangs on block access for DUE platform
 
     /**
      * Native USB Host supported by some boards (USB OTG)
@@ -1680,7 +1680,7 @@
    *
    * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
    */
-  //#define SDCARD_CONNECTION ONBOARD // AZA Q: 2.1.1 ONBOARD, 2.0.9.5 commented? LCD
+  #define SDCARD_CONNECTION ONBOARD // AZA Set ONBOARD so ESP3D can access.  default LCD.  V1E commit @ https://github.com/V1EngineeringInc/MarlinBuilder/pull/131/commits/dd18bf2b26a21462f71bf3c1cfbd1b1b841f3a9b
 
   // Enable if SD detect is rendered useless (e.g., by using an SD extender)
   //#define NO_SD_DETECT
@@ -2009,7 +2009,7 @@
  *
  * Warning: Does not respect endstops!
  */
-// #define BABYSTEPPING  // AZA Q: Enable for 2.1.1?
+#define BABYSTEPPING  // AZA
 #if ENABLED(BABYSTEPPING)
   //#define INTEGRATED_BABYSTEPPING         // EXPERIMENTAL integration of babystepping into the Stepper ISR
   //#define BABYSTEP_WITHOUT_HOMING
@@ -2234,7 +2234,7 @@
   #define MIN_CIRCLE_SEGMENTS    72   // Minimum number of segments in a complete circle
   //#define ARC_SEGMENTS_PER_SEC 50   // Use the feedrate to choose the segment length
   #define N_ARC_CORRECTION       25   // Number of interpolated segments between corrections
-  // #define ARC_P_CIRCLES               // AZA Q: Enable for 2.1.1? Enable the 'P' parameter to specify complete circles
+  #define ARC_P_CIRCLES               // AZA Enabled.  Enable the 'P' parameter to specify complete circles
   //#define SF_ARC_FIX                // Enable only if using SkeinForge with "Arc Point" fillet procedure
 #endif
 
@@ -2242,7 +2242,7 @@
 //#define BEZIER_CURVE_SUPPORT        // Requires ~2666 bytes
 
 #if EITHER(ARC_SUPPORT, BEZIER_CURVE_SUPPORT)
-  // #define CNC_WORKSPACE_PLANES        // AZA Q: Enable for 2.1.1? Allow G2/G3/G5 to operate in XY, ZX, or YZ planes
+  #define CNC_WORKSPACE_PLANES        // AZA Enabled.   Allow G2/G3/G5 to operate in XY, ZX, or YZ planes
 #endif
 
 /**
@@ -2386,7 +2386,7 @@
  * Currently handles M108, M112, M410, M876
  * NOTE: Not yet implemented for all platforms.
  */
-// #define EMERGENCY_PARSER // AZA Q: Eanble for 2.1.1?
+#define EMERGENCY_PARSER // AZA Enabled
 
 /**
  * Realtime Reporting (requires EMERGENCY_PARSER)
@@ -2422,7 +2422,7 @@
 #define SERIAL_OVERRUN_PROTECTION
 
 // For serial echo, the number of digits after the decimal point
-// #define SERIAL_FLOAT_PRECISION 4 // AZA Q: Enable for 2.1.1?  4
+#define SERIAL_FLOAT_PRECISION 4 // AZA Enabled.  4
 
 /**
  * Set the number of proportional font spaces required to fill up a typical character space.
@@ -3271,7 +3271,7 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  // #define SQUARE_WAVE_STEPPING  // AZA Q: Enable for 2.1.1?
+  #define SQUARE_WAVE_STEPPING  // AZA Enabled.
   
   /**
    * Enable M122 debugging command for TMC stepper drivers.
@@ -3779,9 +3779,9 @@
 #define GCODE_MOTION_MODES    // Remember the motion mode (G0 G1 G2 G3 G5 G38.X) and apply for X Y Z E F, etc.
 
 // Enable and set a (default) feedrate for all G0 moves
-#define G0_FEEDRATE 10000 // (mm/min)
+//#define G0_FEEDRATE 3000 // (mm/min) // AZA
 #ifdef G0_FEEDRATE
-  #define VARIABLE_G0_FEEDRATE // The G0 feedrate is set by F in G0 motion mode
+  //#define VARIABLE_G0_FEEDRATE // The G0 feedrate is set by F in G0 motion mode
 #endif
 
 // @section gcode
