@@ -1292,7 +1292,7 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-#define Z_MIN_PROBE_PIN 23 // AZA 23 = PB7 D23, from buildroot\share\PlatformIO\variants\MARLIN_BIGTREE_OCTOPUS_V1\variant.h // Z_MIN_PIN
+#define Z_MIN_PROBE_PIN PG11 // AZA Tried PB7 but no pullup, was floating/unreliable reads.  Originally D23
 
 /**
  * Probe Type 
